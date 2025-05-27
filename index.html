@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>SL Bus Navigation System</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <style>
+  /* Form container */
+  .php-email-form {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Inputs and textarea */
+  .php-email-form .form-control {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: none;
+    color: #333;
+  }
+  .php-email-form .form-control::placeholder {
+    color: #aaa;
+    font-style: italic;
+  }
+
+  /* Focus effect on inputs */
+  .php-email-form .form-control:focus {
+    outline: none;
+    border-color: #ff7f00; /* brand orange */
+    box-shadow: 0 0 8px rgba(255, 127, 0, 0.5);
+    background-color: #fff;
+  }
+
+  /* Textarea resize */
+  .php-email-form textarea.form-control {
+    resize: vertical;
+  }
+
+  /* Submit button */
+  .php-email-form .btn-submit {
+    background-color: #ff7f00;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    padding: 14px 0;
+    border-radius: 12px;
+    width: 100%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .php-email-form .btn-submit:hover,
+  .php-email-form .btn-submit:focus {
+    background-color: #e46800;
+    box-shadow: 0 0 15px rgba(228, 104, 0, 0.7);
+    outline: none;
+  }
+
+  /* Messages */
+  .php-email-form .loading,
+  .php-email-form .error-message,
+  .php-email-form .sent-message {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .php-email-form .loading {
+    color: #ff7f00;
+  }
+  .php-email-form .error-message {
+    color: #d93025; /* red */
+  }
+  .php-email-form .sent-message {
+    color: #188038; /* green */
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 576px) {
+    .php-email-form {
+      padding: 1.5rem 1.8rem;
+    }
+  }
+</style>
+ 
+
+  <!-- Favicons -->
+  <link href="assets/img/buslogo1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EasyFolio
+  * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
+  * Updated: Feb 21 2025 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <h1 class="sitename">SLBNS</h1>
+      </a>
+
+<nav id="navmenu" class="navmenu">
+  <ul>
+    <li><a href="#hero" class="active">Home</a></li>
+
+    <li class="dropdown">
+      <a href="#"><span>Project Scope</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#literature-review">Literature Survey</a></li>
+        <li><a href="#research-gap">Research Gap</a></li>
+        <li><a href="#problem-solution">Research Problem &amp; Solution</a></li>
+        <li><a href="#objectives">Research Objectives</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#technologies">Technologies</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#timeline-brief">Milestones</a></li>
+
+    <li class="dropdown">
+      <a href="#"><span>Downloads</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="#documents">Documents</a></li>
+        <li><a href="#presentations">Presentations</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#team">About Us</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section" style="background: linear-gradient(135deg, #005288 0%, #0073e6 100%); color: white; padding: 6rem 0; position: relative; overflow: hidden;">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row align-items-center content">
+      
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" style="z-index: 10;">
+        <h2 style="
+          font-weight: 800;
+          font-size: 3rem;
+          line-height: 1.2;
+          background: linear-gradient(45deg, #ff7f00, #ffc870);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1.2rem;
+        ">
+          Sri Lanka <br>
+          Intelligent Bus Navigation <br>
+          and Passenger Information System
+        </h2>
+        <p class="lead" style="
+          font-size: 1.25rem;
+          font-weight: 500;
+          margin-bottom: 2rem;
+          max-width: 480px;
+          color: #e3eaf3;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        ">
+          Revolutionizing Public Transport in Sri Lanka with Intelligent Navigation and Timely Passenger Updates.
+        </p>
+        <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+          <a href="#literature-review" class="btn btn-lg btn-primary" style="
+            background: #ff7f00;
+            border: none;
+            padding: 0.85rem 2.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 6px 15px rgba(255,127,0,0.6);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+          " 
+          onmouseover="this.style.background='#e66e00'; this.style.boxShadow='0 8px 20px rgba(230,110,0,0.7)';"
+          onmouseout="this.style.background='#ff7f00'; this.style.boxShadow='0 6px 15px rgba(255,127,0,0.6)';"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 text-center" data-aos="zoom-out" data-aos-delay="300" style="position: relative; z-index: 10;">
+        <img src="assets/img/bustrack.jpg" alt="Bus Navigation Hero" class="img-fluid rounded shadow-lg" style="max-width: 100%; border-radius: 15px; box-shadow: 0 12px 40px rgba(0, 115, 230, 0.4);" />
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Optional decorative SVG shape at bottom -->
+  <svg style="position: absolute; bottom: 0; left: 0; width: 100%; height: 120px; z-index: 5;" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path fill="#0073e6" fill-opacity="0.7" d="M0,256L40,234.7C80,213,160,171,240,144C320,117,400,107,480,133.3C560,160,640,224,720,224C800,224,880,160,960,138.7C1040,117,1120,139,1200,138.7C1280,139,1360,117,1400,106.7L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
+  </svg>
+
+</section>
+
+            <!-- <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+              <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Happy Clients</span>
+              </div>
+            </div> -->
+          </div>
+          
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+
+<!-- Abstract Section -->
+<section id="abstract" class="about section light-background" style="background: #f9fafc; padding: 4rem 0;">
+  <div class="container" data-aos="fade-up" data-aos-delay="100" style="max-width: 900px;">
+
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5">
+      <h2 style="font-weight: 700; color: #003366; font-size: 2.5rem; position: relative; display: inline-block; margin-bottom: 0.5rem;">
+        Abstract
+      </h2>
+      <div class="title-shape" style="margin: 0 auto 1rem; width: 220px;">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" style="stroke: #ff7f00; stroke-width: 3;">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Abstract Text Container -->
+    <div style="background: #fff; padding: 2.5rem 3rem; border-radius: 12px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.05); font-size: 1.1rem; line-height: 1.7; color: #333; text-align: justify;">
+      The Voice-Enhanced Smart Vehicle Transportation and Alerts Management System aims to modernize Sri Lanka’s public transportation by addressing critical issues such as unreliable schedules, long waiting times, and safety concerns for school children. The current lack of real-time tracking for buses and school vans leads to passenger inconvenience and inefficiencies, discouraging public transport use. Additionally, the absence of accessibility features for visually impaired users and secure payment solutions creates barriers for diverse user groups. The proposed system integrates real-time tracking and ETA notifications through a user-friendly mobile app, reducing waiting times and improving service reliability. Voice commands and sound alerts enhance accessibility for visually impaired users, enabling them to receive essential travel information. To modernize fare payments, the system features a re-loadable smart card integrated with a bitcoin-based payment platform, ensuring secure, contactless transactions. High-resolution cameras and Optical Character Recognition (OCR) enable vehicle identification, allowing users to verify vehicles and receive alerts on unauthorized movements, enhancing safety. Machine learning algorithms improve ETA predictions by analyzing traffic conditions, historical data, and route patterns, providing accurate and timely updates. A robust notification system alerts users about approaching buses, schedule changes, or delays, ensuring efficient trip planning. By prioritizing user convenience, safety, and inclusiveness, this system modernizes Sri Lanka’s public transport, making it more accessible, reliable, and secure. It sets a new standard for future advancements in the sector.
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- Literature Review Section -->
+<section id="literature-review" class="about section light-background">
+
+  <!-- Section Title -->
+  <section id="literature-review" class="about section light-background" style="background: #f9fafc; padding: 4rem 0;">
+  <div class="container" data-aos="fade-up" data-aos-delay="100" style="max-width: 900px;">
+
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5">
+      <h2 style="font-weight: 700; color: #003366; font-size: 2.5rem; position: relative; display: inline-block; margin-bottom: 0.5rem;">
+        Literature Review
+      </h2>
+      <div class="title-shape" style="margin: 0 auto 1rem; width: 220px;">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" style="stroke: #ff7f00; stroke-width: 3;">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" />
+        </svg>
+      </div>
+      <p style="font-size: 1.1rem; color: #555;">
+        A review of technological advancements that shape modern public transport solutions, focusing on smart ticketing, tracking, and accessibility.
+      </p>
+    </div>
+
+    <!-- Content Container -->
+    <div style="background: #fff; padding: 2.5rem 3rem; border-radius: 12px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.05);">
+      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: #333;">
+        Public buses remain the most widely used form of public transportation in Sri Lanka, but the system is plagued by challenges such as inefficiency, inconsistent schedules, and poor accessibility [1]. While many global cities have modernized their transit with AI and IoT, Sri Lanka’s public transport is yet to benefit from such unified digital transformations.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: #333;">
+        <strong>ETA prediction and chatbot integration</strong> have become standard in international transport apps. Using Long Short-Term Memory (LSTM) and machine learning models, accurate real-time ETAs can be generated by combining live traffic and historical data [2]. Furthermore, NLP-powered chatbots offer user-friendly, conversational interfaces that help commuters find route and schedule details efficiently, especially beneficial for tourists or first-time users [3].
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: #333;">
+        <strong>Voice-enabled features</strong> greatly enhance inclusivity. NLP and text-to-speech technologies allow visually impaired users to navigate transit apps via voice commands, removing the dependency on visual UI elements [4]. These technologies are underused in local systems, leaving a critical gap in accessibility.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: #333;">
+        <strong>IoT-based modules</strong> offer safety and operational enhancements by alerting drivers about proximity to other buses or pedestrians. Studies suggest that onboard displays and inter-vehicle sensors reduce risks like dangerous overtaking and improve awareness at crowded bus stops [5]. This makes the transport environment safer for both passengers and operators [6].
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: #333;">
+        <strong>NFC and blockchain integration</strong> represents a secure and efficient alternative to paper-based tickets. NFC enables fast, tap-to-pay transactions, while blockchain secures each transaction in a tamper-proof ledger. The combination offers a trustworthy, fraud-resistant solution that enhances user confidence [7][8]. Yet, most existing solutions deploy these technologies separately, not as a combined framework.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: #333;">
+        <strong>Seat availability tracking and smart recommendations</strong> are also gaining attention. Instead of expensive sensors, camera-based systems use ML to identify available seats in real time [9]. When paired with location-based services, passengers can receive suggestions about less crowded buses or nearby attractions—creating a more personalized journey experience [10].
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.7; color: #333;">
+        While each of these innovations AI prediction, NFC-ticketing, IoT monitoring, and accessibility—has been individually explored in past research, a fully integrated solution designed specifically for Sri Lanka’s needs is lacking. This project addresses that gap by merging these technologies into one inclusive, intelligent, and scalable bus navigation platform.
+      </p>
+
+      <!-- References -->
+      <div class="mt-5" style="margin-top: 3rem;">
+        <h4 style="color: #003366; font-weight: 700; margin-bottom: 1rem;">References</h4>
+        <ol style="color: #555; font-size: 1rem; line-height: 1.6; padding-left: 1.2rem;">
+          <li>Wikipedia, “Transport in Sri Lanka.” [Online]. Available: <a href="https://en.wikipedia.org/wiki/Transport_in_Sri_Lanka" target="_blank" style="color: #ff7f00;">Link</a></li>
+          <li>L. Tran, “DeepTRANS: A Deep Learning System for ETA Estimation,” <i>ResearchGate</i>, 2020.</li>
+          <li>A. Nafrees et al., “Intelligent Transportation System Using Smartphone,” in <i>Proc. ICEECCOT</i>, 2021.</li>
+          <li>O. Bezrukov, “How NLP Improves Voice Assistants,” <i>TechStack</i>, 2023.</li>
+          <li>S. Li et al., “IoT-Based Intelligent Traffic Monitoring System,” <i>IEEE Sensors Journal</i>, vol. 21, no. 12, pp. 13456–13463, 2021.</li>
+          <li>P. Zhang, “Smart Bus Stop Alert System Based on IoT,” <i>International Journal of Engineering Research</i>, 2022.</li>
+          <li>K. Wang et al., “Secure NFC Mobile Payment Using Blockchain,” <i>Elsevier Future Generation Computer Systems</i>, 2021.</li>
+          <li>S. Nakamoto, “Bitcoin: A Peer-to-Peer Electronic Cash System,” 2008. [Online]. Available: <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" style="color: #ff7f00;">Link</a></li>
+          <li>H. Park et al., “Vision-Based Seat Occupancy Detection Using Deep Learning,” <i>Sensors</i>, 2020.</li>
+          <li>M. Almagor et al., “AI Travel Recommendations for Urban Transit,” <i>Smart Cities Journal</i>, 2022.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="research-gap" class="skills section" style="background: #f9fafc; padding: 4rem 0;">
+  <div class="container" data-aos="fade-up" data-aos-delay="100" style="max-width: 1100px;">
+
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5" data-aos="fade-up">
+      <h2 style="font-weight: 700; font-size: 2.5rem; color: #003366; margin-bottom: 0.5rem;">
+        Research Gap
+      </h2>
+      <div class="title-shape mx-auto mb-3" style="width: 220px;">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" style="stroke: #ff7f00; stroke-width: 3;">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" />
+        </svg>
+      </div>
+      <p style="font-size: 1.1rem; color: #555;">
+        Critical gaps in Sri Lanka's public transport systems that our integrated solution aims to address.
+      </p>
+    </div>
+
+    <!-- Research Gaps Grid -->
+    <div class="row g-4">
+      <!-- Individual Gap Box -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="gap-box p-4 bg-white rounded-4 shadow-sm h-100 d-flex flex-column">
+          <h3 style="color: #ff7f00; font-weight: 700; margin-bottom: 1rem;">Inaccurate ETA Predictions</h3>
+          <p style="flex-grow: 1; color: #444; font-size: 1rem; line-height: 1.5;">
+            Current systems fail to accurately predict bus arrival times due to lack of integration between real-time and historical data sources.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="gap-box p-4 bg-white rounded-4 shadow-sm h-100 d-flex flex-column">
+          <h3 style="color: #ff7f00; font-weight: 700; margin-bottom: 1rem;">Poor Accessibility</h3>
+          <p style="flex-grow: 1; color: #444; font-size: 1rem; line-height: 1.5;">
+            Public transport apps rarely support voice guidance or screen reader compatibility, making them unusable for visually impaired users.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="gap-box p-4 bg-white rounded-4 shadow-sm h-100 d-flex flex-column">
+          <h3 style="color: #ff7f00; font-weight: 700; margin-bottom: 1rem;">No Intelligent Chatbot</h3>
+          <p style="flex-grow: 1; color: #444; font-size: 1rem; line-height: 1.5;">
+            Most apps lack conversational interfaces to help users ask for routes or bus details naturally, limiting usability for new users and tourists.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="gap-box p-4 bg-white rounded-4 shadow-sm h-100 d-flex flex-column">
+          <h3 style="color: #ff7f00; font-weight: 700; margin-bottom: 1rem;">Lack of IoT-Based Alerts</h3>
+          <p style="flex-grow: 1; color: #444; font-size: 1rem; line-height: 1.5;">
+            There are no systems that provide real-time proximity alerts to drivers, leading to safety risks and reckless overtaking behaviors.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="gap-box p-4 bg-white rounded-4 shadow-sm h-100 d-flex flex-column">
+          <h3 style="color: #ff7f00; font-weight: 700; margin-bottom: 1rem;">Fragmented Payment Systems</h3>
+          <p style="flex-grow: 1; color: #444; font-size: 1rem; line-height: 1.5;">
+            NFC and blockchain are not yet integrated into a single secure platform for ticketing, resulting in inefficiencies and trust issues.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="350">
+        <div class="gap-box p-4 bg-white rounded-4 shadow-sm h-100 d-flex flex-column">
+          <h3 style="color: #ff7f00; font-weight: 700; margin-bottom: 1rem;">No Smart Seat Availability</h3>
+          <p style="flex-grow: 1; color: #444; font-size: 1rem; line-height: 1.5;">
+            Current buses do not provide real-time seat availability. Existing solutions depend on costly IoT sensors instead of smart vision models.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="gap-box p-4 bg-white rounded-4 shadow-sm h-100 d-flex flex-column">
+          <h3 style="color: #ff7f00; font-weight: 700; margin-bottom: 1rem;">Missing Travel Recommendations</h3>
+          <p style="flex-grow: 1; color: #444; font-size: 1rem; line-height: 1.5;">
+            There is no AI-powered recommendation system to guide passengers toward alternative routes or nearby points of interest.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Research Problem & Solution Section -->
+<section id="problem-solution" class="about section light-background">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Section Heading -->
+    <div class="section-title text-center">
+      <h2>Research Problem & Solution</h2>
+      <div class="title-shape">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row align-items-start mt-4">
+      
+      <!-- Left: Problem and Solution Text -->
+      <div class="col-lg-7">
+        <div class="mb-5">
+          <h4 class="text-success">Proposed Problem</h4>
+          <p class="fw-semibold text-dark fs-5">
+            How can we improve the accuracy, safety, and inclusivity of Sri Lanka’s bus transport system using modern technology?
+          </p>
+          <p>
+            The Sri Lankan public bus system faces critical challenges—manual ticketing, unpredictable arrivals, and lack of accessibility. Passengers often deal with delays, unsafe overtaking, and unfair fare collection. Visually impaired users and tourists struggle to access real-time information or navigate the system. Furthermore, there is no unified solution for digital payments, ETA prediction, or driver alerts. These issues reduce reliability, efficiency, and safety across the system.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-success">Proposed Solution</h4>
+          <p>
+            Our proposed solution is an intelligent, mobile-integrated bus navigation and management system that combines:
+            <strong>NFC card-based ticketing</strong> secured with blockchain, <strong>real-time bus tracking and ETA prediction</strong using machine learning, a <strong>voice-enabled chatbot</strong for accessibility, and an <strong>IoT module</strong for driver alerts and seat availability updates.
+          </p>
+          <p>
+            NFC cards allow fast, contactless fare payment. Blockchain ensures secure, tamper-proof ticket validation. A real-time GPS tracking system paired with LSTM models improves ETA predictions under dynamic conditions. Meanwhile, onboard IoT displays warn drivers of nearby buses to reduce reckless overtaking. An AI chatbot supports conversational route queries and assists visually impaired users through voice navigation. Passengers also receive recommendations for available seats and nearby landmarks, improving comfort and experience. All data is presented on an accessible mobile dashboard for users and operators.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Video or Image Placeholder -->
+      <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="200">
+        <div class="embed-responsive embed-responsive-16by9">
+          <!-- Replace with your video or image -->
+          <iframe class="w-100 rounded shadow" height="315" src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="System Overview Video" frameborder="0" allowfullscreen></iframe>
+          <p class="text-muted mt-2">Product Demonstration - System Overview</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- Research Objectives Section -->
+<section id="objectives" class="resume section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Research Objectives</h2>
+    <div class="title-shape">
+      <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </div>
+    <p>The following objectives guide the development of the Smart Bus Navigation and Passenger Information System for Sri Lanka.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row">
+      <div class="col-12">
+        <div class="resume-wrapper">
+
+          <!-- Main Objective -->
+          <div class="resume-block" data-aos="fade-up">
+            <h2 style="color: #ff7f00;">Main Objective</h2>
+            <p class="lead">To develop an intelligent and inclusive public transport system that integrates real-time tracking, secure ticketing, AI-based recommendations, and accessible user interaction for a better commuting experience in Sri Lanka.</p>
+
+            <div class="timeline">
+              <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-left">
+                  <h4 class="company">Smart Transport Integration</h4>
+                  <span class="period">2024 - 2025</span>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-right">
+                  <h3 class="position">Smart Bus Navigation Platform</h3>
+                  <p class="description">The platform aims to unify real-time bus tracking, seat availability, payment, and accessibility tools into one mobile-first system with support for AI and IoT technologies.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub Objectives -->
+          <div class="resume-block" data-aos="fade-up" data-aos-delay="100">
+            <h2 style="color: #ff7f00;">Sub Objectives</h2>
+            <p class="lead">Key functional goals to achieve the main objective effectively and inclusively.</p>
+
+            <div class="timeline">
+
+              <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-left">
+                  <h4 class="company">Real-Time Tracking & ETA</h4>
+                  <span class="period">Phase 1</span>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-right">
+                  <h3 class="position">Predictive Bus Arrival System</h3>
+                  <p class="description">To develop an accurate ETA prediction system using machine learning based on real-time GPS data and historical traffic patterns.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item" data-aos="fade-up" data-aos-delay="250">
+                <div class="timeline-left">
+                  <h4 class="company">Accessible Transport</h4>
+                  <span class="period">Phase 2</span>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-right">
+                  <h3 class="position">Voice & Chatbot Features</h3>
+                  <p class="description">To integrate voice-enabled chatbots and screen reader compatibility, enabling visually impaired users to navigate the app independently.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="timeline-left">
+                  <h4 class="company">Secure Payments</h4>
+                  <span class="period">Phase 3</span>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-right">
+                  <h3 class="position">NFC + Blockchain Ticketing</h3>
+                  <p class="description">To implement an NFC-based ticketing system secured via blockchain to ensure transparent, tamper-proof fare collection.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item" data-aos="fade-up" data-aos-delay="350">
+                <div class="timeline-left">
+                  <h4 class="company">Safety with IoT</h4>
+                  <span class="period">Phase 4</span>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-right">
+                  <h3 class="position">Driver Alert System</h3>
+                  <p class="description">To develop an IoT-based alert system that notifies drivers of nearby buses and waiting passengers to prevent reckless overtaking and improve safety.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="timeline-left">
+                  <h4 class="company">Comfort & Recommendations</h4>
+                  <span class="period">Phase 5</span>
+                </div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-right">
+                  <h3 class="position">Seat Monitoring & Suggestions</h3>
+                  <p class="description">To enable seat availability tracking using camera-based ML models and provide users with AI-driven travel recommendations such as alternate routes or nearby points of interest.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Methodology Section -->
+<section id="methodology" class="about section light-background" style="background: #f9fafc; padding: 4rem 0;">
+  <div class="container" data-aos="fade-up" style="max-width: 1000px;">
+
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5" data-aos="fade-up">
+      <h2 style="font-weight: 700; font-size: 2.5rem; color: #003366; margin-bottom: 0.5rem;">
+        Methodology
+      </h2>
+      <div class="title-shape mx-auto mb-3" style="width: 220px;">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" style="stroke: #ff7f00; stroke-width: 3;">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" />
+        </svg>
+      </div>
+      <p style="font-size: 1.1rem; color: #555;">
+        A structured and modular approach was followed to implement the smart transport system with four major integrated components.
+      </p>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row align-items-center gy-4">
+
+      <!-- Left Column: Architecture Image -->
+      <div class="col-lg-6 text-center" data-aos="fade-right" data-aos-delay="100">
+        <img src="assets/img/researchsystem.png" alt="System Architecture Diagram" class="img-fluid rounded shadow-lg" style="max-width: 100%; border-radius: 15px;" />
+        <p class="text-muted mt-3" style="font-style: italic; font-size: 0.9rem;">Figure: High-Level Architecture of the System</p>
+      </div>
+
+      <!-- Right Column: Description -->
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200" style="color: #333; font-size: 1.1rem; line-height: 1.7;">
+        <p>
+          The system is composed of four main modules that work together to create a unified, intelligent public transport experience in Sri Lanka:
+        </p>
+
+        <ol style="padding-left: 1.3rem; margin-bottom: 1.5rem;">
+          <li style="margin-bottom: 1rem;">
+            <strong>ETA Prediction & Chatbot:</strong> Machine learning models like LSTM are trained on historical and real-time GPS data to predict accurate arrival times. An AI chatbot assists users with natural language queries about routes, schedules, and bus stops.
+          </li>
+          <li style="margin-bottom: 1rem;">
+            <strong>IoT-Based Driver Alerts:</strong> Distance sensors are installed on buses to detect proximity of other buses and passengers at bus stops. These alerts are displayed on onboard screens to reduce overtaking risks.
+          </li>
+          <li style="margin-bottom: 1rem;">
+            <strong>NFC + Blockchain Ticketing:</strong> A contactless payment system allows passengers to tap NFC cards. Each transaction is securely recorded using a blockchain ledger for transparency and fraud prevention.
+          </li>
+          <li style="margin-bottom: 1rem;">
+            <strong>Seat Availability & Travel Recommendations:</strong> A camera-based seat monitoring module uses computer vision to detect available seats. The mobile app recommends comfortable options and nearby points of interest using location data.
+          </li>
+        </ol>
+
+        <p>
+          The system follows the Agile development model and was deployed in phases. All modules communicate through a central backend and data is stored in a secure cloud environment. Notifications, ETA updates, and seat data are delivered through a unified mobile app interface.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Technologies Used Section -->
+<section id="technologies" class="section light-background">
+  <div class="container" data-aos="fade-up">
+    
+    <!-- Section Title -->
+    <div class="section-title text-center">
+      <h2>Technologies Used</h2>
+      <div class="title-shape">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Technologies Grid -->
+    <div class="row text-center justify-content-center g-4 mt-4">
+
+      <!-- Technology Item -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/python1.png" alt="Python" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">Python</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/react.png" alt="React" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">React</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/tensorflow.jpg" alt="TensorFlow" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">TensorFlow</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/keras.jpeg" alt="Keras" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">Keras</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/mongodb1.png" alt="MongoDB" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">MongoDB</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/firebase1.png" alt="Firebase" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">Firebase</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/docker.png" alt="Docker" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">Docker</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="tech-item">
+          <img src="assets/img/maps.png" alt="Google Map API" class="img-fluid rounded-circle shadow">
+          <p class="mt-2">Google Map API</p>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Timeline in Brief Section -->
+<section id="timeline-brief" class="resume section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2 style="color: #ff7f00;">Timeline in Brief</h2>
+    <div class="title-shape">
+      <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="#ff7f00" stroke-width="2"></path>
+      </svg>
+    </div>
+    <p>This timeline outlines the key academic deliverables and milestones across the lifecycle of the research project.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row">
+      <div class="col-12">
+        <div class="resume-wrapper">
+
+          <div class="timeline">
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+              <div class="timeline-left">
+                <h4 class="company">March 2021</h4>
+                <span class="period">6%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Project Proposal</h3>
+                <p class="description">Presented to sponsors or supervisors to define project goals, scope, and expected outcomes.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
+              <div class="timeline-left">
+                <h4 class="company">June 2021</h4>
+                <span class="period">6%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Progress Presentation I</h3>
+                <p class="description">Assessed the 50% completion milestone and evaluated the design and implementation progress.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+              <div class="timeline-left">
+                <h4 class="company">July 2021</h4>
+                <span class="period">10%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Research Paper</h3>
+                <p class="description">Documented the academic contribution and referenced work to support project novelty.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="250">
+              <div class="timeline-left">
+                <h4 class="company">September 2021</h4>
+                <span class="period">18%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Progress Presentation II</h3>
+                <p class="description">Demonstrated 90% completion status including a technical poster on system implementation.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+              <div class="timeline-left">
+                <h4 class="company">October 2021</h4>
+                <span class="period">2%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Website Assessment</h3>
+                <p class="description">Reviewed the research project website for structure, accessibility, and clarity of information.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="350">
+              <div class="timeline-left">
+                <h4 class="company">November 2021</h4>
+                <span class="period">3%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Logbook Evaluation</h3>
+                <p class="description">Validated project progress through individual status documents and supervisor remarks.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+              <div class="timeline-left">
+                <h4 class="company">November 2021</h4>
+                <span class="period">19%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Final Report</h3>
+                <p class="description">Summarized the completed project across individual and group outcomes in the final deliverable.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="450">
+              <div class="timeline-left">
+                <h4 class="company">November 2021</h4>
+                <span class="period">20%</span>
+              </div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-right">
+                <h3 class="position">Final Presentation & Viva</h3>
+                <p class="description">Conducted individual oral assessments to evaluate knowledge, contribution, and outcome understanding.</p>
+              </div>
+            </div>
+
+          </div><!-- End of timeline -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Documents Section -->
+<section id="documents" class="section light-background">
+  <div class="container" data-aos="fade-up">
+
+   <!-- Group Documents Section -->
+<!-- Include Bootstrap Icons CSS in your <head> if not already included -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Group Documents Section -->
+<div class="section-title text-center mb-5" style="max-width: 900px; margin: 0 auto;">
+  <h2 style="font-weight: 700; font-size: 2.5rem; color: #003366; margin-bottom: 0.5rem;">Group Documents</h2>
+  <div class="title-shape mx-auto mb-3" style="width: 220px;">
+    <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" style="stroke: #ff7f00; stroke-width: 3;">
+      <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" />
+    </svg>
+  </div>
+  <p style="font-size: 1.1rem; color: #555;">All official group project documents are listed below for download or reference.</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" style="max-width: 1000px; margin: 0 auto;">
+
+  <!-- Document Card Template -->
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Topic Assessment</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Submitted on 2021/02/25</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Group</span>
+          <a href="https://drive.google.com/file/d/1G9JHHZXyDh9Lc-Efi5l9Ms4-_dm1ePL3/view?usp=sharing" download class="text-primary fw-semibold text-decoration-none download-link">
+            <i class="bi bi-download me-1"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Repeat for other docs, just update titles, dates, and links -->
+
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Project Charter</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Submitted on 2021/02/25</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Group</span>
+          <a href="https://drive.google.com/file/d/1G9JHHZXyDh9Lc-Efi5l9Ms4-_dm1ePL3/view?usp=sharing" download class="text-primary fw-semibold text-decoration-none download-link">
+            <i class="bi bi-download me-1"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Research Paper</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Yet to be submitted, link will be updated soon.</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Group</span>
+          <a href="https://drive.google.com/file/d/1aDAFEg2EsBjNZoMFg7TwavIh7ctLdFzx/view?usp=drive_link" download class="text-primary fw-semibold text-decoration-none download-link">
+          <i class="text-secondary fw-semibold"></i>Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Final Report</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Submitted on 2021/10/13</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Group</span>
+          <a href="https://drive.google.com/file/d/1TmV1IcmtByT3NIOCjd6KG5do_fmUPWYd/view?usp=sharing" download class="text-primary fw-semibold text-decoration-none download-link">
+            <i class="bi bi-download me-1"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Poster</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Submitted on 2021/10/13</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Group</span>
+          <a href="assets/files/project-poster.pdf" download class="text-primary fw-semibold text-decoration-none download-link">
+            <i class="bi bi-download me-1"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Add this CSS either in your main CSS file or inside <style> tag -->
+<style>
+  .doc-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .doc-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(255, 127, 0, 0.4);
+    z-index: 5;
+  }
+  .download-link i {
+    transition: color 0.3s ease;
+  }
+  .download-link:hover i {
+    color: #ff7f00;
+  }
+</style>
+
+
+<!-- Include Bootstrap Icons CSS in your <head> if not already included -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Individual Documents Section -->
+<div class="section-title mt-5 text-center" style="max-width: 900px; margin: 0 auto;">
+  <h2 style="font-weight: 700; font-size: 2.5rem; color: #003366; margin-bottom: 0.5rem;">Individual Documents</h2>
+  <div class="title-shape mx-auto mb-3" style="width: 220px;">
+    <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" style="stroke: #ff7f00; stroke-width: 3;">
+      <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" />
+    </svg>
+  </div>
+  <p style="font-size: 1.1rem; color: #555;">All official individual project documents are listed below for download or reference.</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4" style="max-width: 1000px; margin: 0 auto;">
+
+  <!-- Document Card Template -->
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Project Proposal</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Submitted on 2021/03/22</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Individual</span>
+          <a href="https://drive.google.com/drive/folders/1uvTruugUGqGzzv_ode3SZVV75o4Davt2?usp=sharing" download class="text-primary fw-semibold text-decoration-none download-link">
+            <i class="bi bi-download me-1"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Status Documents I</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Submitted on 2021/07/05</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Individual</span>
+          <a href="assets/files/status-documents-1.pdf" download class="text-primary fw-semibold text-decoration-none download-link">
+            <i class="bi bi-download me-1"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Status Documents II</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Yet to be submitted, link will be updated soon.</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Individual</span>
+          <span class="text-secondary fw-semibold">Download</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="d-flex align-items-center mb-3">
+          <i class="bi bi-file-earmark-text-fill text-primary fs-2 me-3"></i>
+          <h5 class="card-title mb-0" style="color: #003366;">Final Report</h5>
+        </div>
+        <p class="card-text text-muted mb-3">Submitted on 2021/10/13</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="text-muted">Individual</span>
+          <a href="https://drive.google.com/drive/folders/1fGl4uZCRi0j2amkc7hhyqOTfFosQ4vEi?usp=sharing" download class="text-primary fw-semibold text-decoration-none download-link">
+            <i class="bi bi-download me-1"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Add this CSS if not already added -->
+<style>
+  .doc-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .doc-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(255, 127, 0, 0.4);
+    z-index: 5;
+  }
+  .download-link i {
+    transition: color 0.3s ease;
+  }
+  .download-link:hover i {
+    color: #ff7f00;
+  }
+</style>
+
+
+
+<!-- Presentations Section -->
+<!-- Include Bootstrap Icons CSS in your <head> if not already included -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<section id="presentations" class="section light-background" style="padding: 3rem 0;">
+  <div class="container" data-aos="fade-up" style="max-width: 1000px; margin: 0 auto;">
+
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5">
+      <h2 style="font-weight: 700; font-size: 2.5rem; color: #003366; margin-bottom: 0.5rem;">Presentations</h2>
+      <div class="title-shape mx-auto mb-3" style="width: 220px;">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" style="stroke: #ff7f00; stroke-width: 3;">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" />
+        </svg>
+      </div>
+      <p style="font-size: 1.1rem; color: #555;">Download or preview all group presentation files submitted throughout the project lifecycle.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+      <!-- Presentation Card Template -->
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-file-earmark-presentation-fill text-primary fs-2 me-3"></i>
+              <h5 class="card-title mb-0" style="color: #003366;">Project Proposal</h5>
+            </div>
+            <p class="card-text text-muted mb-3">Submitted on 2021/03/14</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted">Group</span>
+              <a href="https://docs.google.com/presentation/d/1D6h_Gywpec-hytM-oZTQEodW2wffF7pW/edit?usp=sharing&ouid=103505271060490960041&rtpof=true&sd=true" download class="text-primary fw-semibold text-decoration-none download-link">
+                <i class="bi bi-download me-1"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>  
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-file-earmark-presentation-fill text-primary fs-2 me-3"></i>
+              <h5 class="card-title mb-0" style="color: #003366;">Progress Presentation I</h5>
+            </div>
+            <p class="card-text text-muted mb-3">Submitted on 2021/07/08</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted">Group</span>
+              <a href="https://docs.google.com/presentation/d/1D6h_Gywpec-hytM-oZTQEodW2wffF7pW/edit?usp=sharing&ouid=103505271060490960041&rtpof=true&sd=true" download class="text-primary fw-semibold text-decoration-none download-link">
+                <i class="bi bi-download me-1"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-file-earmark-presentation-fill text-primary fs-2 me-3"></i>
+              <h5 class="card-title mb-0" style="color: #003366;">Progress Presentation II</h5>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted">Group</span>
+              <a href="https://docs.google.com/presentation/d/1D6h_Gywpec-hytM-oZTQEodW2wffF7pW/edit?usp=sharing&ouid=103505271060490960041&rtpof=true&sd=true" download class="text-primary fw-semibold text-decoration-none download-link">
+                <i class="bi bi-download me-1"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 rounded-4 doc-card">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div class="d-flex align-items-center mb-3">
+              <i class="bi bi-file-earmark-presentation-fill text-primary fs-2 me-3"></i>
+              <h5 class="card-title mb-0" style="color: #003366;">Final Presentation</h5>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted">Group</span>
+              <a href="assets/files/FinalPresentation.pptx" download class="text-primary fw-semibold text-decoration-none download-link">
+                <i class="bi bi-download me-1"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- End row -->
+  </div>
+</section>
+
+<style>
+  .doc-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .doc-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(255, 127, 0, 0.4);
+    z-index: 5;
+  }
+  .download-link i {
+    transition: color 0.3s ease;
+  }
+  .download-link:hover i {
+    color: #ff7f00;
+  }
+</style>
+
+
+<!-- Meet Our Team Section -->
+<section id="team" class="section light-background">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Section Title -->
+    <div class="section-title">
+      <h2>Meet Our Team</h2>
+      <div class="title-shape">
+        <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+        </svg>
+      </div>
+      <p>Dedicated team members who built the Smart Bus Navigation and Passenger Information System.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+
+      <!-- Member 1 -->
+      <div class="col">
+  <div class="card h-100 text-center shadow-sm">
+    <img src="assets/img/person/githsara.jpg" class="card-img-top" alt="A.S.C.G. Senarathne">
+    <div class="card-body">
+      <h5 class="card-title">A.S.C.G. Senarathne</h5>
+      <!-- <span class="badge bg-primary mb-2">AI / ETA Prediction</span> -->
+      <p class="card-text">Department of IT<br>SLIIT, Faculty of Computing</p>
+      <a href="mailto:it21205460@my.sliit.lk" class="btn btn-sm btn-outline-dark mb-2">it21205460@my.sliit.lk</a>
+      <br>
+      <a href="https://www.linkedin.com/in/githsara-senarathne-bb9634215" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" aria-label="LinkedIn Profile">
+        <!-- LinkedIn SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 5px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.208c.837 0 1.358-.554 1.358-1.248-.015-.71-.521-1.248-1.342-1.248-.82 0-1.358.538-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.208V9.359c0-.215.015-.43.08-.584.176-.43.577-.875 1.25-.875.882 0 1.235.66 1.235 1.628v4.866h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.28 0-1.845.707-2.165 1.205v.025h-.015a5.54 5.54 0 0 1 .015-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+
+      <!-- Member 2 -->
+     <div class="col">
+  <div class="card h-100 text-center shadow-sm">
+    <img src="assets/img/person/harith.jpg" class="card-img-top" alt="R.L.H.P. Rajapaksha">
+    <div class="card-body">
+      <h5 class="card-title">R.L.H.P. Rajapaksha</h5>
+      <!-- <span class="badge bg-primary mb-2">Blockchain / NFC</span> -->
+      <p class="card-text">Department of IT<br>SLIIT, Faculty of Computing</p>
+      <a href="mailto:it21192050@my.sliit.lk" class="btn btn-sm btn-outline-dark mb-2">it21192050@my.sliit.lk</a>
+      <br>
+      <a href="https://www.linkedin.com/in/harith-rajapaksha-5a90b02a0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" aria-label="LinkedIn Profile">
+        <!-- LinkedIn SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 5px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.208c.837 0 1.358-.554 1.358-1.248-.015-.71-.521-1.248-1.342-1.248-.82 0-1.358.538-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.208V9.359c0-.215.015-.43.08-.584.176-.43.577-.875 1.25-.875.882 0 1.235.66 1.235 1.628v4.866h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.28 0-1.845.707-2.165 1.205v.025h-.015a5.54 5.54 0 0 1 .015-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Member 4 -->
+      <div class="col">
+  <div class="card h-100 text-center shadow-sm">
+    <img src="assets/img/person/viraj2.jpg" class="card-img-top" alt="N.V. Kalhara">
+    <div class="card-body">
+      <h5 class="card-title">N.V. Kalhara</h5>
+      <!-- <span class="badge bg-primary mb-2">Frontend / GPS Mapping</span> -->
+      <p class="card-text">Department of IT<br>SLIIT, Faculty of Computing</p>
+      <a href="mailto:it21202490@my.sliit.lk" class="btn btn-sm btn-outline-dark mb-2">it21202490@my.sliit.lk</a>
+      <br>
+      <a href="https://www.linkedin.com/in/virajkalhara" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" aria-label="LinkedIn Profile">
+        <!-- LinkedIn SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 5px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.208c.837 0 1.358-.554 1.358-1.248-.015-.71-.521-1.248-1.342-1.248-.82 0-1.358.538-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.208V9.359c0-.215.015-.43.08-.584.176-.43.577-.875 1.25-.875.882 0 1.235.66 1.235 1.628v4.866h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.28 0-1.845.707-2.165 1.205v.025h-.015a5.54 5.54 0 0 1 .015-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+
+      <!-- Member 5 -->
+      <div class="col">
+  <div class="card h-100 text-center shadow-sm">
+    <img src="assets/img/person/thanusan.jpg" class="card-img-top" alt="M. Thanusan">
+    <div class="card-body">
+      <h5 class="card-title">M. Thanusan</h5>
+      <!-- <span class="badge bg-primary mb-2">IoT & Seat Detection</span> -->
+      <p class="card-text">Department of IT<br>SLIIT, Faculty of Computing</p>
+      <a href="mailto:it21175848@my.sliit.lk" class="btn btn-sm btn-outline-dark mb-2">it21175848@my.sliit.lk</a>
+      <br>
+      <a href="https://linkedin.com/in/mahendran-thanusan-65225121b" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" aria-label="LinkedIn Profile">
+        <!-- LinkedIn SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 5px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.208c.837 0 1.358-.554 1.358-1.248-.015-.71-.521-1.248-1.342-1.248-.82 0-1.358.538-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.208V9.359c0-.215.015-.43.08-.584.176-.43.577-.875 1.25-.875.882 0 1.235.66 1.235 1.628v4.866h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.28 0-1.845.707-2.165 1.205v.025h-.015a5.54 5.54 0 0 1 .015-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+
+
+            <!-- Supervisor -->
+      <div class="col">
+  <div class="card h-100 text-center shadow-sm">
+    <img src="assets/img/person/sanika.jpg" class="card-img-top" alt="Sanika Wijayasekara">
+    <div class="card-body">
+      <h5 class="card-title">Sanika Wijayasekara</h5>
+      <span class="badge bg-dark mb-2">Supervisor</span>
+      <p class="card-text">Dean, Faculty of Computing, SLTC University, Padukka, Sri Lanka</p>
+      <a href="mailto:sanika.w@sltc.ac.lk" class="btn btn-sm btn-outline-dark">sanika.w@sltc.ac.lk</a>
+      <br /><br />
+      <a href="https://linkedin.com/in/sanika-wijayasekara-1b7222220" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" aria-label="LinkedIn Profile">
+        <!-- LinkedIn SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 5px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.208c.837 0 1.358-.554 1.358-1.248-.015-.71-.521-1.248-1.342-1.248-.82 0-1.358.538-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.208V9.359c0-.215.015-.43.08-.584.176-.43.577-.875 1.25-.875.882 0 1.235.66 1.235 1.628v4.866h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.28 0-1.845.707-2.165 1.205v.025h-.015a5.54 5.54 0 0 1 .015-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Co Supervisor -->
+      <div class="col">
+        <div class="card h-100 text-center shadow-sm">
+          <img src="assets/img/person/kapila.jpg" class="card-img-top" alt="Kapila Dissanayaka">
+          <div class="card-body">
+            <h5 class="card-title">Kapila Dissanayaka</h5>
+            <span class="badge bg-dark mb-2">Co-Supervisor</span>
+            <p class="card-text">Department of Computer Science<br>SLIIT, Faculty of Computing</p>
+            <a href="mailto:kapila.d@sliit.lk" class="btn btn-sm btn-outline-dark">kapila.d@sliit.lk</a>
+            <br><br>
+            <a href="linkedin.com/in/kapila-d-dissanayaka" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" aria-label="LinkedIn Profile">
+        <!-- LinkedIn SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 5px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.208c.837 0 1.358-.554 1.358-1.248-.015-.71-.521-1.248-1.342-1.248-.82 0-1.358.538-1.358 1.248 0 .694.52 1.248 1.327 1.248h.015zm4.908 8.208V9.359c0-.215.015-.43.08-.584.176-.43.577-.875 1.25-.875.882 0 1.235.66 1.235 1.628v4.866h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.28 0-1.845.707-2.165 1.205v.025h-.015a5.54 5.54 0 0 1 .015-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        LinkedIn
+      </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="contact section light-background">
+  <div class="container" data-aos="fade-up" data-aos-delay="100" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <div class="row g-5" style="width: 100%; max-width: 1100px;">
+
+      <!-- Left Column: Info -->
+      <div class="col-lg-6">
+        <div class="content" data-aos="fade-up" data-aos-delay="200">
+          <div class="section-title">
+            <h2>Contact Us</h2>
+            <div class="title-shape">
+              <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+              </svg>
+            </div>
+            <p>Get in touch with the Smart Bus Navigation research team.</p>
+          </div>
+
+          <div class="contact-info mt-4">
+            <div class="info-item d-flex mb-3">
+              <i class="bi bi-envelope-at me-3"></i>
+              <span>smartbusnavigation@gmail.com</span>
+            </div>
+
+            <div class="info-item d-flex mb-3">
+              <i class="bi bi-telephone me-3"></i>
+              <span>+94 77 592 4442</span>
+            </div>
+
+            <div class="info-item d-flex mb-4">
+              <i class="bi bi-geo-alt me-3"></i>
+              <span>SLIIT Malabe Campus, New Kandy Road, Malabe, Sri Lanka</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Form -->
+      <div class="col-lg-6">
+        <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-body p-4 p-lg-5">
+
+            <form action="forms/contact.php" method="post" class="php-email-form">
+              <div class="row gy-4">
+                <div class="col-12">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                </div>
+                <div class="col-12">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                </div>
+                <div class="col-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                </div>
+                <div class="col-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Your Message" required=""></textarea>
+                </div>
+                <div class="col-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <button type="submit" class="btn btn-submit w-100">Send Message</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+            <!-- <a href="https://goo.gl/maps/XYZ" target="_blank" class="map-link d-inline-flex align-items-center">
+              View on Google Maps
+              <i class="bi bi-arrow-right ms-2"></i>
+            </a> -->
+          </div>
+        </div>
+      </div>
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">smartbusnavigation</strong> <span>All Rights Reserved</span></p>
+      </div>
+?
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+         
+        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+        Designed by <a href="#">Team</a>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
