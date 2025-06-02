@@ -1431,32 +1431,38 @@
       </div>
 
       <!-- Right Column: Form -->
-      <div class="col-lg-6">
-        <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
-          <div class="card-body p-4 p-lg-5">
+<div class="col-lg-6">
+  <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
+    <div class="card-body p-4 p-lg-5">
 
-            <form action="forms/contact.php" method="post" class="php-email-form">
-              <div class="row gy-4">
-                <div class="col-12">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-                <div class="col-12">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-                <div class="col-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-                <div class="col-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Your Message" required=""></textarea>
-                </div>
-                <div class="col-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                  <button type="submit" class="btn btn-submit w-100">Send Message</button>
-                </div>
-              </div>
-            </form>
+      <!-- Form uses EmailJS -->
+      <form id="contact-form">
+        <div class="row gy-4">
+          <div class="col-12">
+            <input type="text" name="from_name" class="form-control" placeholder="Your Name" required>
+          </div>
+          <div class="col-12">
+            <input type="email" class="form-control" name="from_email" placeholder="Your Email" required>
+          </div>
+          <div class="col-12">
+            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+          </div>
+          <div class="col-12">
+            <textarea class="form-control" name="message" rows="6" placeholder="Your Message" required></textarea>
+          </div>
+          <div class="col-12 text-center">
+            <div class="loading d-none">Loading</div>
+            <div class="error-message text-danger d-none"></div>
+            <div class="sent-message text-success d-none">Your message has been sent. Thank you!</div>
+            <button type="submit" class="btn btn-submit w-100">Send Message</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
 
           </div>
         </div>
@@ -1512,6 +1518,8 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 
 </body>
 
